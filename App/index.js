@@ -68,6 +68,7 @@ class App extends React.Component {
             <Text style={styles.headerText}>Top Headlines</Text>
           }
           renderItem={({ item, index }) => (
+            // eslint-disable-next-line react/jsx-props-no-spreading
             <ArticleRow index={index} {...item} />
           )}
           keyExtractor={item => `${item.publishedAt}-${item.title}`}
