@@ -29,10 +29,12 @@ class App extends React.Component {
     loading: true
   };
 
+  // get headlines on mount
   componentDidMount() {
     this.requestTopHeadlines();
   }
 
+  // request client
   requestTopHeadlines = () => {
     client
       .query({
@@ -69,9 +71,9 @@ class App extends React.Component {
           }
           renderItem={({ item, index }) => (
             // eslint-disable-next-line react/jsx-props-no-spreading
-            <ArticleRow index={index} {...item} />
+            <ArticleRow index={index} {...item} /> // spread so each part of object is item and easily accessible
           )}
-          keyExtractor={item => `${item.publishedAt}-${item.title}`}
+          keyExtractor={item => `${item.publishedAt}-${item.title}`} // string used as key
           ListFooterComponent={this.renderFooter()}
         />
       </SafeAreaView>

@@ -45,16 +45,18 @@ const styles = StyleSheet.create({
   }
 });
 
+// display of article row
 export const ArticleRow = ({ title, publishedAt, source, index, url }) => {
+  // array destructuring from useState
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <TouchableOpacity onPress={() => setModalVisible(true)}>
       <Modal animationType="slide" transparent visible={modalVisible}>
-        <TouchableOpacity
+        <TouchableOpacity // close when clicked again
           style={{ flex: 1 }}
           onPress={() => setModalVisible(false)}
         />
-        <EmbeddedWebView url={url} />
+        <EmbeddedWebView url={url} /* embedded web view from bottom */ />
       </Modal>
       <View style={styles.row}>
         <View style={styles.numberContainer}>

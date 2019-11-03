@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
   }
 });
 
+// uses url, style display
 export const EmbeddedWebView = ({ url }) => (
   <View style={styles.container}>
     <View style={styles.topBar}>
@@ -52,8 +53,9 @@ export const EmbeddedWebView = ({ url }) => (
     </View>
     <WebView
       source={{ uri: url }}
-      startInLoadingState
+      startInLoadingState // loading true at start
       renderLoading={() => (
+        // loading indicator
         <View style={styles.loadingContainer}>
           <ActivityIndicator size="large" />
         </View>
