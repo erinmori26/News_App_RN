@@ -45,6 +45,8 @@ const styles = StyleSheet.create({
   }
 });
 
+/* **** GRISSOM DIFFERENT STUFF IN HIS CODE ***** */
+
 // display of article row
 export const ArticleRow = ({ title, publishedAt, source, index, url }) => {
   // array destructuring from useState

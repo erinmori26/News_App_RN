@@ -3,6 +3,7 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 import { RestLink } from "apollo-link-rest";
 
 // link to api
+// rest api - url, endpoints, like connecting to server in other projects
 const restLink = new RestLink({
   uri: "https://newsapi.org/v2/",
   headers: {
