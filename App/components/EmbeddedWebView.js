@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
 });
 
 // Copying url to clipboard
+// eslint-disable-next-line no-undef
 writeToClipboard = async url => {
   await Clipboard.setString(url);
   alert("Copied to clipboard.");
@@ -58,6 +59,7 @@ export const EmbeddedWebView = ({ url }) => (
           style={styles.inputText}
           numberofLines={1}
           ellipsizeMode="tail"
+          // eslint-disable-next-line react/no-this-in-sfc
           onPress={() => this.writeToClipboard(url)}
         >
           {url}
