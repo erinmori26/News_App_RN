@@ -4,19 +4,22 @@ import {
   StyleSheet,
   Dimensions,
   ActivityIndicator,
-  Text
+  Text,
+  Clipboard
 } from "react-native";
 
 import { WebView } from "react-native-webview";
 
 const Screen = Dimensions.get("window");
+
 const styles = StyleSheet.create({
   container: {
     height: Screen.height * 0.85,
     backgroundColor: "#fff",
+    // The properties below only work with iOS, not Android
     shadowColor: "#000",
     shadowRadius: 10,
-    shadowOpacity: 0.25,
+    shadowOpacity: 0.25, // 25%
     shadowOffset: { width: 0, height: -1 }
   },
   loadingContainer: {
@@ -28,7 +31,7 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   topBar: {
-    backgroundColor: "rgba(0, 0, 0, 0.1)"
+    backgroundColor: "rgba(0,0,0,0.1)"
   },
   input: {
     backgroundColor: "#fff",
@@ -41,21 +44,31 @@ const styles = StyleSheet.create({
   }
 });
 
-// uses url, style display
+// Copying url to clipboard
+writeToClipboard = async url => {
+  await Clipboard.setString(url);
+  alert("Copied to clipboard.");
+};
+
 export const EmbeddedWebView = ({ url }) => (
   <View style={styles.container}>
     <View style={styles.topBar}>
       <View style={styles.input}>
-        <Text style={styles.inputText} numberOfLines={1} ellipsizeMode="tail">
+        <Text
+          style={styles.inputText}
+          numberofLines={1}
+          ellipsizeMode="tail"
+          onPress={() => this.writeToClipboard(url)}
+        >
           {url}
         </Text>
       </View>
     </View>
+
     <WebView
       source={{ uri: url }}
-      startInLoadingState // loading true at start
+      startInLoadingState
       renderLoading={() => (
-        // loading indicator
         <View style={styles.loadingContainer}>
           <ActivityIndicator size="large" />
         </View>

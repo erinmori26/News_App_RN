@@ -1,3 +1,6 @@
 module.exports = {
-  extends: "handlebarlabs"
+  extends: "handlebarlabs",
+  rules: {
+    "linebreak-style": 0
+  }
 };

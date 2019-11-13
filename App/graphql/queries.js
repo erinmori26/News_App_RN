@@ -6,11 +6,11 @@ import gql from "graphql-tag";
 // only get data requested, not all data
 // accept different categories
 export const TopHeadlines = gql`
-  query TopHeadlines($category: String) {
-    headlines(category: $category)
+  query TopHeadlines($category: String, $country: String) {
+    headlines(category: $category, country: $country)
       @rest(
         type: "HeadlinesPayload"
-        path: "top-headlines?country=us&category={args.category}"
+        path: "top-headlines?country={args.country}&category={args.category}"
       ) {
       totalResults
       articles @type(name: "ArticlePayload") {
